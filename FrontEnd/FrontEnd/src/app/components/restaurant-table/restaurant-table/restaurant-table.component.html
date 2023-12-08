@@ -1,0 +1,21 @@
+<input type="text" [(ngModel)]="filterText" (input)="applyFilter()" placeholder="Filtrer par nom" />
+
+
+<table>
+  <tr>
+    <th>Nom du restaurant :</th>
+    <th>Adresse :</th>
+    <th>Nombre d'étoiles moyen :</th>
+  </tr>
+  <tr *ngFor="let resto of restaurants" appCouleur="{{resto.moyenneEvaluations}}">
+    <td>{{resto.nom}}</td>
+    <td>{{resto.adresse}}</td>
+    <td>
+      <ng-container *ngIf="resto.moyenneEvaluations !== null && resto.moyenneEvaluations !== 0; else placeholder">
+        {{resto.moyenneEvaluations}}
+      </ng-container>
+      <ng-template #placeholder>/</ng-template>
+    </td>
+    <button (click)="navigateToDetails(resto.id)">Details {{resto.nom}}</button>
+  </tr>
+</table>
