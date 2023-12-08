@@ -20,10 +20,10 @@ public class EvaluationEntity {
     @GeneratedValue
     private int id;
 
-    @Column(name = "evaluateur_name", length = 50)
+    @Column(name = "evaluateur_name", length = 50, columnDefinition = "VARCHAR(50)")
     private String evaluateurName;
 
-    @Column(name = "commentaire", length = 255)
+    @Column(name = "commentaire", length = 255, columnDefinition = "VARCHAR(255)")
     private String commentaire;
 
     @Column(name = "etoile")
@@ -38,7 +38,5 @@ public class EvaluationEntity {
     @ManyToOne()
     @JoinColumn(name = "restaurant")
     private RestaurantEntity restaurant;
-    //@OneToMany(mappedBy = "evaluation", cascade = CascadeType.ALL)
-    //private List<PhotoEntity> photos;
 
 }

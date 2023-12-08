@@ -1,6 +1,7 @@
 package com.examen.examen_fullstack.service;
 
 import com.examen.examen_fullstack.entity.EvaluationEntity;
+import com.examen.examen_fullstack.entity.EvaluationFinaleEntity;
 import com.examen.examen_fullstack.entity.RestaurantEntity;
 import com.examen.examen_fullstack.exception.RessourceDoesntExist;
 import com.examen.examen_fullstack.repository.RestaurantRepository;
@@ -26,11 +27,10 @@ public class RestaurantService {
         return this.restaurantRepository.findAll();
     }
 
-    public RestaurantEntity addRestaurant(final String nom, final String adresse) {
-        EvaluationEntity comm = EvaluationEntity.builder().build();
-        List<EvaluationEntity> nouvelleEval = new ArrayList<EvaluationEntity>();
-        nouvelleEval.add(comm);
-        final RestaurantEntity nouveauRestaurant = RestaurantEntity.builder().nom(nom).adresse(adresse).evaluations(nouvelleEval).build();
+    public RestaurantEntity addRestaurant(final String nom, final String adresse, final double note) {
+        List<EvaluationEntity> nouvelleEval = new ArrayList<>();
+        List<EvaluationFinaleEntity> nouvelleEvalFinale = new ArrayList<>();
+        final RestaurantEntity nouveauRestaurant = RestaurantEntity.builder().nom(nom).adresse(adresse).evaluations(nouvelleEval).evaluationFinaleEntity(nouvelleEvalFinale).moyenneEvaluations(note).build();
         return this.restaurantRepository.save(nouveauRestaurant);
     }
 }

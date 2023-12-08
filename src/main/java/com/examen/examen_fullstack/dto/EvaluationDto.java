@@ -18,24 +18,24 @@ import lombok.NoArgsConstructor;
         @JsonProperty("id")
         private int id;
 
-        @JsonProperty("nomEvaluateur")
+        @JsonProperty("evaluateur_name")
         @Size(max = 50)
-        private String nomEvaluateur;
+        private String evaluateurName;
 
         @JsonProperty("commentaire")
         @Size(max = 255)
         private String commentaire;
 
-        @JsonProperty("note")
-        private int note;
+        @JsonProperty("etoile")
+        private int etoile;
 
 
         public static EvaluationDto fromEntity(EvaluationEntity evaluationEntity) {
             return EvaluationDto.builder()
                     .id(evaluationEntity.getId())
-                    .nomEvaluateur(evaluationEntity.getEvaluateurName())
+                    .evaluateurName(evaluationEntity.getEvaluateurName())
                     .commentaire(evaluationEntity.getCommentaire())
-                    .note(evaluationEntity.getEtoile())
+                    .etoile(evaluationEntity.getEtoile())
                     .build();
         }
     }

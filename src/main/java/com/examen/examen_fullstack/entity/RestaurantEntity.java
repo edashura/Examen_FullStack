@@ -20,24 +20,23 @@ public class RestaurantEntity {
     @GeneratedValue
     private int id;
 
-    @Column(name = "nom", length = 90)
+    @Column(name = "nom", length = 90, columnDefinition = "VARCHAR(90)")
     private String nom;
 
-    @Column(name = "adresse", length = 255)
+    @Column(name = "adresse", length = 255, columnDefinition = "VARCHAR(255)")
     private String adresse;
+
+    @Column(name = "moyenne_evaluations", columnDefinition = "DOUBLE DEFAULT 0.0")
+    private Double moyenneEvaluations;
 
     @OneToMany(mappedBy = "restaurant")
     private List<EvaluationEntity> evaluations;
 
-    @Column(name = "moyenne_evaluations")
-    private Double moyenneEvaluations;
 
     @OneToOne
     @JoinColumn(name = "evaluation_finale_id")
     private EvaluationFinaleEntity evaluationFinale;
 
-    @Column(name = "image_illustration")
-    private String imageIllustration;
 
     @OneToMany(mappedBy ="restaurant")
     private List<EvaluationEntity> evaluationEntity;

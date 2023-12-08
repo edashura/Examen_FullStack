@@ -21,7 +21,7 @@ public class EvaluationFinaleEntity {
     private String deciderName;
 
     @Column(name = "final_stars")
-    private int finalStars;
+    private double finalStars;
 
     @Column(name = "descriptive_text", columnDefinition = "TEXT")
     private String descriptiveText;

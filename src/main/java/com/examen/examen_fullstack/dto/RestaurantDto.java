@@ -36,13 +36,10 @@ public class RestaurantDto {
     private List<EvaluationDto> evaluations;
 
     @JsonProperty("moyenneEvaluations")
-    private Double moyenneEvaluations;
+    private Double moyenneEvaluations = 0.0;
 
     @JsonProperty("evaluationFinale")
     private List<EvaluationFinaleDto> evaluationFinale;
-
-    @JsonProperty("imageIllustration")
-    private String imageIllustration;
 
     @JsonProperty("tags")
     private Set<TagDto> tags;
@@ -56,6 +53,7 @@ public class RestaurantDto {
                 .adresse(restaurantEntity.getAdresse())
                 .evaluations(restaurantEntity.getEvaluations().stream().map(evaluationEntity -> EvaluationDto.fromEntity(evaluationEntity)).toList())
                 .evaluationFinale(restaurantEntity.getEvaluationFinaleEntity().stream().map(evaluationFinaleEntity -> EvaluationFinaleDto.fromEntity(evaluationFinaleEntity)).toList())
+                .moyenneEvaluations(restaurantEntity.getMoyenneEvaluations())
                 .build();
     }
 }

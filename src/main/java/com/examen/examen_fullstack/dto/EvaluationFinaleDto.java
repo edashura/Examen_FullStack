@@ -22,7 +22,7 @@ public class EvaluationFinaleDto {
     private String decideurName;
 
     @JsonProperty("finalNote")
-    private int finalNote;
+    private double finalNote;
 
     @JsonProperty("descriptiveText")
     private String descriptiveText;

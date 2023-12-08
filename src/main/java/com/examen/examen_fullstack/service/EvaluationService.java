@@ -14,9 +14,9 @@ public class EvaluationService {
     private final EvaluationRepository evaluationRepository;
     private final RestaurantService restaurantService;
 
-    public EvaluationEntity addEvaluation(int restaurantId, String commentaireEvaluation) {
+    public EvaluationEntity addEvaluation(int restaurantId, String commentaireEvaluation, String evaluateurEvaluation, Integer etoile) {
         final RestaurantEntity restaurant = restaurantService.getRestaurantById(restaurantId);
-        final EvaluationEntity nouvelleEvaluation = EvaluationEntity.builder().commentaire(commentaireEvaluation).restaurant(restaurant).build();
+        final EvaluationEntity nouvelleEvaluation = EvaluationEntity.builder().commentaire(commentaireEvaluation).etoile(etoile).evaluateurName(evaluateurEvaluation).restaurant(restaurant).build();
 
         return this.evaluationRepository.save(nouvelleEvaluation);
     }

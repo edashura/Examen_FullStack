@@ -23,6 +23,6 @@ public class EvaluationController {
     @PostMapping("restaurants/{restaurantId}/evaluations")
     public @ResponseBody EvaluationDto addEvaluation(@Valid @RequestBody EvaluationDto dto, @PathVariable int restaurantId) {
         System.out.println("ajout evaluation à resto n°" + restaurantId);
-        return EvaluationDto.fromEntity(this.evaluationService.addEvaluation(restaurantId, dto.getCommentaire()));
+        return EvaluationDto.fromEntity(this.evaluationService.addEvaluation(restaurantId, dto.getCommentaire(), dto.getEvaluateurName(), dto.getEtoile()));
     }
 }
